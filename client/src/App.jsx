@@ -1,25 +1,20 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-
 import "./App.css";
-
-import Posts from "./components/Post";
-import Post from "./components/Post";
-import Header from "./Header";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./layouts/Layouts";
+import HomePage from "./pages/Homepage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <main>
-        <Header />
-
-        <Post />
-        <Post />
-        <Post />
-      </main>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path={"/login"} element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Route>
+      </Routes>
     </>
   );
 }
